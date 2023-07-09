@@ -3,6 +3,8 @@ import "./App.css";
 import { Card, Button, notification, Input, Space, Col } from "antd";
 import Polygon from "./components/Polygon";
 import calculaMenorDistancia from "./utils/calculaMenorDistancia";
+import verificaSeEstaPrimeiroQuadrante from "./utils/verificaSeEstaPrimeiroQuadrante";
+import moveParaPrimeiroQuadrante from "./utils/moveParaPrimeiroQuadrante";
 
 function App() {
   const [points, setPoints] = useState([]);
@@ -37,7 +39,14 @@ function App() {
           newPoints.push([x, y]);
         });
 
-        setPoints(newPoints);
+        const estaNoPrimeiroQuadrante =
+          verificaSeEstaPrimeiroQuadrante(newPoints);
+        if (!estaNoPrimeiroQuadrante) {
+          const pontosMovidos = moveParaPrimeiroQuadrante(newPoints);
+          setPoints(pontosMovidos);
+        } else {
+          setPoints(newPoints);
+        }
 
         notification.success({
           message: "Pontos carregados com sucesso",
