@@ -10,7 +10,7 @@
 
 ## Execução
 
-- acesse:
-- importe o arquivo csv com os pontos desejados (obs: os pontos devem estar todos no primeiro quadrante, ou seja com valores de x e y positivos, para a visualização total do polígono)
+- acesse: https://react-exercicio-4.vercel.app/
+- importe o arquivo csv com os pontos desejados (obs: 1-Os pontos devem estar todos no primeiro quadrante, ou seja com valores de x e y positivos, para a visualização total do polígono; 2-Em csv_files existem três exemplos para serem carregados)
 - utilize o valor da escala para visualizar o polígono da melhor forma
 - clique em calcular para obter o valor do menor espaço interno
