@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import { Card, Button, notification, Input } from "antd";
+import { Card, Button, notification, Input, Space, Col } from "antd";
 import Polygon from "./components/Polygon";
 import calculaMenorDistancia from "./utils/calculaMenorDistancia";
 
@@ -67,24 +67,30 @@ function App() {
   };
 
   return (
-    <Card title="Cálculo de menor abertura interna">
-      <Button onClick={uploadPoints} type="primary">
-        Carregar Dados
-      </Button>
-      <Button
-        onClick={() => setMinValue(calculaMenorDistancia(points))}
-        type="primary"
-      >
-        Calcular
-      </Button>
-      <Input
-        type="number"
-        value={scale}
-        minValue={1}
-        onChange={(e) => setScale(e.target.value)}
-        placeholder="Escala"
-      />
-      {minValue && <p>Menor abertura interna: {minValue}</p>}
+    <Card title="Cálculo da menor abertura interna">
+      <Col>
+        <Space direction="horizontal">
+          <Button onClick={uploadPoints} type="primary">
+            Carregar Dados
+          </Button>
+          <Button
+            onClick={() => setMinValue(calculaMenorDistancia(points))}
+            type="primary"
+          >
+            Calcular
+          </Button>
+          <Input
+            type="number"
+            value={scale}
+            minValue={1}
+            onChange={(e) => setScale(e.target.value)}
+            placeholder="Escala"
+          />
+        </Space>
+      </Col>
+      {minValue && minValue !== Infinity && (
+        <p>Menor abertura interna: {minValue}</p>
+      )}
       <Polygon points={points} scale={scale} />;
     </Card>
   );
