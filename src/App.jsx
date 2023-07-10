@@ -47,7 +47,7 @@ function App() {
         } else {
           setPoints(newPoints);
         }
-
+        setMinValue(null);
         notification.success({
           message: "Pontos carregados com sucesso",
         });
@@ -76,32 +76,34 @@ function App() {
   };
 
   return (
-    <Card title="Cálculo da menor abertura interna">
-      <Col>
-        <Space direction="horizontal">
-          <Button onClick={uploadPoints} type="primary">
-            Carregar Dados
-          </Button>
-          <Button
-            onClick={() => setMinValue(calculaMenorDistancia(points))}
-            type="primary"
-          >
-            Calcular
-          </Button>
-          <Input
-            type="number"
-            value={scale}
-            minValue={1}
-            onChange={(e) => setScale(e.target.value)}
-            placeholder="Escala"
-          />
-        </Space>
-      </Col>
-      {minValue && minValue !== Infinity && (
-        <p>Menor abertura interna: {minValue}</p>
-      )}
-      <Polygon points={points} scale={scale} />;
-    </Card>
+    <div className="app-container">
+      <Card title="Cálculo da menor abertura interna">
+        <Col>
+          <Space direction="horizontal">
+            <Button onClick={uploadPoints} type="primary">
+              Carregar Dados
+            </Button>
+            <Button
+              onClick={() => setMinValue(calculaMenorDistancia(points))}
+              type="primary"
+            >
+              Calcular
+            </Button>
+            <Input
+              type="number"
+              value={scale}
+              minValue={1}
+              onChange={(e) => setScale(e.target.value)}
+              placeholder="Escala"
+            />
+          </Space>
+        </Col>
+        {minValue && minValue !== Infinity && (
+          <p>Menor abertura interna: {minValue}</p>
+        )}
+        <Polygon points={points} scale={scale} />
+      </Card>
+    </div>
   );
 }
 
