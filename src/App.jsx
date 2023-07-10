@@ -100,7 +100,7 @@ function App() {
       {minValue && minValue !== Infinity && (
         <p>Menor abertura interna: {minValue}</p>
       )}
-      <Polygon points={points} scale={scale} />;
+      <Polygon points={points} scale={scale} />
     </Card>
   );
 }
