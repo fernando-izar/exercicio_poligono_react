@@ -47,7 +47,7 @@ function App() {
         } else {
           setPoints(newPoints);
         }
-
+        setMinValue(null);
         notification.success({
           message: "Pontos carregados com sucesso",
         });
